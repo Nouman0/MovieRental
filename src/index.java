@@ -64,7 +64,7 @@ public class index extends javax.swing.JFrame { //extends jFrame class
         jButton1.setText("Search Customer");
         jButton1.addActionListener(new java.awt.event.ActionListener() { //actionlistener
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt); //call to this function when event occur
+               // jButton1ActionPerformed(evt); //call to this function when event occur
             }
         });
 
@@ -103,7 +103,7 @@ public class index extends javax.swing.JFrame { //extends jFrame class
         jButton4.setText("Add Customer");
         jButton4.addActionListener(new java.awt.event.ActionListener() { //action listner of addcustomer
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jButton4ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -157,9 +157,7 @@ public class index extends javax.swing.JFrame { //extends jFrame class
         pack();
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) { 
-    	
-    }
+   
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
        
@@ -177,9 +175,13 @@ public class index extends javax.swing.JFrame { //extends jFrame class
         ad.setVisible(true); //display the add addmovie class jFrame
     }
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose(); //close current jFrame
+        addcustomer ac=new addcustomer(); //initialize addcustomer class object
+        ac.setVisible(true); //display the add addcustomer class jFrame
+    }
     
     
-  
     
     private void searchTitle() {
     	 String path="jdbc:mysql://localhost:3306/movierental"; 
