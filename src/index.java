@@ -64,7 +64,7 @@ public class index extends javax.swing.JFrame { //extends jFrame class
         jButton1.setText("Search Customer");
         jButton1.addActionListener(new java.awt.event.ActionListener() { //actionlistener
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-               // jButton1ActionPerformed(evt); //call to this function when event occur
+                jButton1ActionPerformed(evt); //call to this function when event occur
             }
         });
 
@@ -157,7 +157,10 @@ public class index extends javax.swing.JFrame { //extends jFrame class
         pack();
     }
 
-   
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) { 
+    	//calling function searchCustomer
+       searchCustomer(); 
+    }
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
        
@@ -181,7 +184,32 @@ public class index extends javax.swing.JFrame { //extends jFrame class
         ac.setVisible(true); //display the add addcustomer class jFrame
     }
     
-    
+    private void searchCustomer() {
+    	String path="jdbc:mysql://localhost:3306/movierental"; //path of database
+        String user="root";
+        String password ="";      
+        try {
+            String c_id;
+            String customer= jTextField1.getText(); //getting customer name from textfield1
+            Connection conn=DriverManager.getConnection(path,user,password); //making connection to database
+            Statement stmt=conn.createStatement();
+            ResultSet rs=null;
+            PreparedStatement p=null;
+            String query ="SELECT * from customers where c_name like '"+customer+"' ";
+            p=conn.prepareStatement(query); 
+            rs=p.executeQuery(); //execute query
+            while (rs.next())
+            {                   
+            c_id=rs.getString("c_id"); //getting id of customer
+            dispose();
+            Customer c= new Customer(c_id); //initialize customer object and passing customer id
+            c.setVisible(true);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(index.class.getName()).log(Level.SEVERE, null, ex); //exception handling
+        }
+    }
     
     private void searchTitle() {
     	 String path="jdbc:mysql://localhost:3306/movierental"; 
