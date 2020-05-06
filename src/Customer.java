@@ -236,7 +236,7 @@ public class Customer extends javax.swing.JFrame {
         jButton8.setText("Update Subscrition Plan");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jButton8ActionPerformed(evt);
+                jButton8ActionPerformed(evt);
             }
         });
 
@@ -431,6 +431,12 @@ public class Customer extends javax.swing.JFrame {
         
     } 
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
+        String cccid=jLabel3.getText();
+        dispose();
+        updatec up=new updatec(cccid); //initialize update class object and passing customer id to that class
+        up.setVisible(true); //redirect to update class
+    }
     
     private void rentTitle() {
     	String path="jdbc:mysql://localhost:3306/movierental";
